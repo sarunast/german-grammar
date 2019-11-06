@@ -23,4 +23,7 @@ module.exports = {
     'prettier/prettier': 'error',
     '@typescript-eslint/ban-ts-ignore': 'off'
   },
+  env: {
+    "browser": true
+  }
 }
