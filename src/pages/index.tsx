@@ -13,11 +13,16 @@ const ImageContainer = styled.div`
 const speakExample = () => {
   const synth = window.speechSynthesis
   const utterThis = new SpeechSynthesisUtterance('Das ist eine gute Frage !')
-  const voices = synth.getVoices()
+  const germanVoices = synth.getVoices().filter(voice => voice.lang === 'de-DE')
+  const googleDeutsch = germanVoices.find(
+    ({ name }) => name === 'Google Deutsch',
+  )
 
   // eslint-disable-next-line prefer-destructuring
-  utterThis.voice = voices[47]
-  synth.speak(utterThis)
+  if (germanVoices.length !== 0) {
+    utterThis.voice = googleDeutsch || germanVoices[0]
+    synth.speak(utterThis)
+  }
 }
 
 const IndexPage: FC = () => (
