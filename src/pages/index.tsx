@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import Layout from '../components/layout'
-import Image from '../components/image'
-import SEO from '../components/seo'
+import Layout from '../components/Layout'
+import Image from '../components/Image'
+import SEO from '../components/SEO'
 
 const ImageContainer = styled.div`
   max-width: 300px;
@@ -18,8 +18,8 @@ const speakExample = () => {
     ({ name }) => name === 'Google Deutsch',
   )
 
-  // eslint-disable-next-line prefer-destructuring
   if (germanVoices.length !== 0) {
+    // eslint-disable-next-line prefer-destructuring
     utterThis.voice = googleDeutsch || germanVoices[0]
     synth.speak(utterThis)
   }

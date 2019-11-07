@@ -8,9 +8,9 @@
 import React, { FC } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import GlobalCss from './globalCss'
+import GlobalCss from './GlobalCss'
 
-import Header from './header'
+import Header from './Header'
 
 const ContentContainer = styled.div`
   margin: 0 auto;

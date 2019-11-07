@@ -1,7 +1,6 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 import { normalize } from 'polished'
-import Helmet from 'react-helmet'
 
 const GlobalCss = createGlobalStyle`
   *,
@@ -14,7 +13,7 @@ const GlobalCss = createGlobalStyle`
   
   html {
     // Use react helmet to load the font
-    font-family: 'Roboto', -apple-system,'BlinkMacSystemFont','Segoe UI','Helvetica Neue','Arial','Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: rgba(0, 0, 0, 0.84);
     text-rendering: optimizeLegibility;
     font-feature-settings: 'kern', 'liga', 'clig', 'calt';
@@ -23,12 +22,6 @@ const GlobalCss = createGlobalStyle`
 
 const GlobalStyles: React.FC = () => (
   <>
-    <Helmet>
-      <link
-        href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-        rel="stylesheet"
-      />
-    </Helmet>
     <GlobalCss />
   </>
 )
