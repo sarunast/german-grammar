@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import React, { FC, useState } from 'react'
+import React, {
+  forwardRef,
+  memo,
+  RefForwardingComponent,
+  useState,
+} from 'react'
 
 const CustomInput = styled.input`
   border-radius: 3px;
@@ -11,26 +16,59 @@ const CustomInput = styled.input`
 type Props = {
   fullWord: string
   hiddenWord: string
+  inputNumber: number
+  handleSubmit: (params: {
+    value: string
+    isCorrect: boolean
+    inputNumber: number
+  }) => void
 }
 
-const InputChecker: FC<Props> = ({ fullWord, hiddenWord }) => {
+const InputChecker: RefForwardingComponent<HTMLInputElement, Props> = (
+  { fullWord, hiddenWord, handleSubmit, inputNumber },
+  ref,
+) => {
   const firstStarPos = hiddenWord.indexOf('*')
   const lastStarPos = hiddenWord.lastIndexOf('*') + 1
   const validInputValue = fullWord.substring(firstStarPos, lastStarPos)
   const isWordEndingWithStar = fullWord.length === lastStarPos
   const visibleWord = fullWord.replace(validInputValue, '')
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState<string>('')
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
-  function handleChange(event: any) {
-    setInput(event.target.value)
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    setInput(e.target.value)
+    setIsCorrect(null)
   }
 
-  if (input === validInputValue) console.log('true')
+  function handleEnter(e: React.KeyboardEvent<HTMLInputElement>): void {
+    if (e.key === 'Enter') {
+      const isInputCorrect = input === validInputValue
+      handleSubmit({ value: input, isCorrect: isInputCorrect, inputNumber })
+      setIsCorrect(isInputCorrect)
+    }
+  }
+
+  function getBackgroundColor(): 'white' | 'red' | 'green' {
+    if (isCorrect === null) {
+      return 'white'
+    }
+
+    if (isCorrect) {
+      return 'green'
+    }
+    return 'red'
+  }
 
   const inputField = (
     <CustomInput
+      style={{
+        backgroundColor: getBackgroundColor(),
+      }}
       value={input}
+      ref={ref}
       size={validInputValue.length}
+      onKeyDown={handleEnter}
       onChange={handleChange}
     />
   )
@@ -43,4 +81,4 @@ const InputChecker: FC<Props> = ({ fullWord, hiddenWord }) => {
   )
 }
 
-export default InputChecker
+export default memo(forwardRef(InputChecker))
