@@ -1,24 +1,42 @@
-import React, { FC, Fragment, useRef } from 'react'
+import React, { FC, Fragment, memo } from 'react'
 
 import InputChecker, { Props } from './InputChecker'
 
 export type ExerciseSentencesProps = {
   string: string
   rightWords: string[]
+  onTaskFinished: (taskNumber: number) => void
+  taskNumber: number
+  passFocusFirstFunction: (focusFirstInput: () => void) => void
 }
 
-const Task: FC<ExerciseSentencesProps> = ({ string, rightWords }) => {
-  const itemsRef = useRef<HTMLInputElement[]>([])
+const Task: FC<ExerciseSentencesProps> = ({
+  string,
+  rightWords,
+  onTaskFinished,
+  taskNumber,
+  passFocusFirstFunction,
+}) => {
+  const itemsRef: HTMLInputElement[] = []
   let inputFieldIndex = -1
 
   const handleCheck: Props['handleSubmit'] = ({ isCorrect, inputNumber }) => {
     if (isCorrect && inputNumber !== inputFieldIndex) {
-      itemsRef.current[inputNumber + 1].focus()
+      itemsRef[inputNumber + 1].focus()
+    }
+
+    // Execute once the last input are completed
+    if (isCorrect && inputNumber === inputFieldIndex) {
+      onTaskFinished(taskNumber)
     }
   }
 
   function handleReferences(input: HTMLInputElement): void {
-    itemsRef.current.push(input)
+    itemsRef.push(input)
+  }
+
+  function focusFirstInput(): void {
+    itemsRef[0].focus()
   }
 
   const words = string.split(' ').map((word, index) => {
@@ -45,7 +63,12 @@ const Task: FC<ExerciseSentencesProps> = ({ string, rightWords }) => {
     return <Fragment key={index}>{word} </Fragment>
   })
 
-  return <span>{words}</span>
+  return (
+    <span>
+      {passFocusFirstFunction(focusFirstInput)}
+      {words}
+    </span>
+  )
 }
 
-export default Task
+export default memo(Task)
