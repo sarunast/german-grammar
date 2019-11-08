@@ -49,7 +49,7 @@ const Task: FC<ExerciseSentencesProps> = ({ string, rightWords }) => {
     }
 
     // eslint-disable-next-line react/no-array-index-key
-    return <Fragment key={index}>{word}</Fragment>
+    return <Fragment key={index}>{word} </Fragment>
   })
 
   return <span>{words}</span>
