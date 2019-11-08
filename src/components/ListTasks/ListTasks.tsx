@@ -6,6 +6,7 @@ type Props = {
   tasks: ExerciseSentencesProps[]
 }
 
+// TODO wording should be better
 type taskFunction = () => void
 const ListTasks: FC<Props> = ({ tasks }) => {
   const taskFocusFunctions: taskFunction[] = []
