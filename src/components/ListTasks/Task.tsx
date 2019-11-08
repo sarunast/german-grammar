@@ -1,6 +1,6 @@
 import React, { FC, Fragment, useRef } from 'react'
 
-import InputChecker from './InputChecker'
+import InputChecker, { Props } from './InputChecker'
 
 export type ExerciseSentencesProps = {
   string: string
@@ -11,14 +11,7 @@ const Task: FC<ExerciseSentencesProps> = ({ string, rightWords }) => {
   const itemsRef = useRef<HTMLInputElement[]>([])
   let inputFieldIndex = -1
 
-  function handleCheck({
-    isCorrect,
-    inputNumber,
-  }: {
-    value: string
-    isCorrect: boolean
-    inputNumber: number
-  }): void {
+  const handleCheck: Props['handleSubmit'] = ({ isCorrect, inputNumber }) => {
     if (isCorrect && inputNumber !== inputFieldIndex) {
       itemsRef.current[inputNumber + 1].focus()
     }

@@ -13,7 +13,7 @@ const CustomInput = styled.input`
     monospace;
 `
 
-type Props = {
+export type Props = {
   fullWord: string
   hiddenWord: string
   inputNumber: number
