@@ -6,19 +6,18 @@ type Props = {
   tasks: { string: string; rightWords: string[] }[]
 }
 
-// TODO wording should be better
-type taskFunction = () => void
+type emptyFuncType = () => void
 const ListTasks: FC<Props> = ({ tasks }) => {
-  const taskFocusFunctions: taskFunction[] = []
+  const focusTaskFirstInput: emptyFuncType[] = []
 
   function onTaskFinished(taskNumber: number): void {
     if (tasks.length - 1 !== taskNumber) {
-      taskFocusFunctions[taskNumber + 1]() // focus next line(task)
+      focusTaskFirstInput[taskNumber + 1]() // focus next line(task)
     }
   }
 
-  function setFocusFirstInputInLine(focusFirst: taskFunction): void {
-    taskFocusFunctions.push(focusFirst)
+  function setFocusFirstInputFunction(focusFirst: emptyFuncType): void {
+    focusTaskFirstInput.push(focusFirst)
   }
 
   return (
@@ -31,7 +30,7 @@ const ListTasks: FC<Props> = ({ tasks }) => {
             string={task.string}
             onTaskFinished={onTaskFinished}
             rightWords={task.rightWords}
-            passFocusFirstFunction={setFocusFirstInputInLine}
+            passFocusFirstInputFunction={setFocusFirstInputFunction}
           />
         </div>
       ))}

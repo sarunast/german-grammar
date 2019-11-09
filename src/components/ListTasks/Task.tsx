@@ -7,7 +7,7 @@ export type ExerciseSentencesProps = {
   rightWords: string[]
   onTaskFinished: (taskNumber: number) => void
   taskNumber: number
-  passFocusFirstFunction: (focusFirstInput: () => void) => void
+  passFocusFirstInputFunction: (focusFirstInput: () => void) => void
 }
 
 const Task: FC<ExerciseSentencesProps> = ({
@@ -15,7 +15,7 @@ const Task: FC<ExerciseSentencesProps> = ({
   rightWords,
   onTaskFinished,
   taskNumber,
-  passFocusFirstFunction,
+  passFocusFirstInputFunction,
 }) => {
   const itemsRef: HTMLInputElement[] = []
   let inputFieldIndex = -1
@@ -65,7 +65,7 @@ const Task: FC<ExerciseSentencesProps> = ({
 
   return (
     <span>
-      {passFocusFirstFunction(focusFirstInput)}
+      {passFocusFirstInputFunction(focusFirstInput)}
       {words}
     </span>
   )
