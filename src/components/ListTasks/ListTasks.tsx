@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 
-import Task, { ExerciseSentencesProps } from './Task'
+import Task from './Task'
 
 type Props = {
-  tasks: ExerciseSentencesProps[]
+  tasks: { string: string; rightWords: string[] }[]
 }
 
 // TODO wording should be better
