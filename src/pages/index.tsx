@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import Image from '../components/Image'
 import SEO from '../components/SEO'
+import ListTasks from '../components/ListTasks/ListTasks'
 
 const ImageContainer = styled.div`
   max-width: 300px;
@@ -25,10 +26,22 @@ const speakExample = () => {
   }
 }
 
+const tasks = [
+  {
+    string: 'My word t*** test te** **ge.',
+    rightWords: ['test', 'tett', 'gege'],
+  },
+  {
+    string: 'Other foo b** f**.',
+    rightWords: ['bar', 'foo'],
+  },
+]
+
 const IndexPage: FC = () => (
   <Layout>
     <SEO title="Home" />
     <h1>Hi people</h1>
+    <ListTasks tasks={tasks} />
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
     <button type="button" onClick={speakExample}>
