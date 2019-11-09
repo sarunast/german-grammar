@@ -39,34 +39,34 @@ const Task: FC<ExerciseSentencesProps> = ({
     itemsRef[0].focus()
   }
 
-  const words = string.split(' ').map((word, index) => {
-    if (word.includes('*')) {
-      // Keep track of used correct values
-      inputFieldIndex += 1
-
-      const renderInput = (
-        // eslint-disable-next-line react/no-array-index-key
-        <Fragment key={index}>
-          <InputChecker
-            fullWord={rightWords[inputFieldIndex]}
-            hiddenWord={word}
-            inputNumber={inputFieldIndex}
-            handleSubmit={handleCheck}
-            ref={handleReferences}
-          />{' '}
-        </Fragment>
-      )
-      return renderInput
-    }
-
-    // eslint-disable-next-line react/no-array-index-key
-    return <Fragment key={index}>{word} </Fragment>
-  })
-
   return (
     <span>
+      {string.split(' ').map((word, index) => {
+        if (word.includes('*')) {
+          // Keep track of used correct values
+          inputFieldIndex += 1
+
+          const renderInput = (
+            // eslint-disable-next-line react/no-array-index-key
+            <Fragment key={index}>
+              <InputChecker
+                fullWord={rightWords[inputFieldIndex]}
+                hiddenWord={word}
+                inputNumber={inputFieldIndex}
+                handleSubmit={handleCheck}
+                ref={handleReferences}
+              />{' '}
+            </Fragment>
+          )
+          return renderInput
+        }
+
+        // eslint-disable-next-line react/no-array-index-key
+        return <Fragment key={index}>{word} </Fragment>
+      })}
+
+      {/* // Pass up the functions */}
       {passFocusFirstInputFunction(focusFirstInput)}
-      {words}
     </span>
   )
 }
