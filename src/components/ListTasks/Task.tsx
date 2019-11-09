@@ -65,7 +65,7 @@ const Task: FC<ExerciseSentencesProps> = ({
         return <Fragment key={index}>{word} </Fragment>
       })}
 
-      {/* // Pass up the functions */}
+      {/* // Pass up the function */}
       {passFocusFirstInputFunction(focusFirstInput)}
     </span>
   )
