@@ -9,25 +9,25 @@
 const path = require('path')
 
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'German grammar',
+  tagline: 'Learning german while documenting it',
+  url: 'https://germangram.netlify.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
+  organizationName: 'sarunast', // Usually your GitHub org/user name.
   projectName: 'germangram', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'GermanGram',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'GermanGram Logo',
         src: 'img/logo.svg',
       },
       links: [
         { to: 'docs/doc1', label: 'Docs', position: 'left' },
         { to: 'blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/sarunast/german-grammar',
           label: 'GitHub',
           position: 'right',
         },
