@@ -12,8 +12,6 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-import Test from '../components/test'
-
 import styles from './styles.module.css'
 
 const features = [
@@ -90,7 +88,6 @@ function Home() {
         </div>
       </header>
       <main>
-        <Test />
         {features && features.length && (
           <section className={styles.features}>
             <div className="container">
