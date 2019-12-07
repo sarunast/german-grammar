@@ -10,7 +10,7 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md,mdx}\""
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-alpha.38",
+    "@docusaurus/core": "2.0.0-alpha.39",
     "@docusaurus/preset-classic": "2.0.0-alpha.39",
     "classnames": "2.2.6",
     "lodash.clonedeep": "4.5.0",
