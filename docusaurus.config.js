@@ -5,9 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require('path')
-
 module.exports = {
   title: 'German grammar',
   tagline: 'Learning german while documenting it',
@@ -51,5 +48,4 @@ module.exports = {
       },
     ],
   ],
-  plugins: [path.resolve(__dirname, './webpackConfigPlugin')],
 }
