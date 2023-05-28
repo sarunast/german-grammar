@@ -47,7 +47,7 @@
     "eslint-plugin-react-hooks": "2.5.1",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
-    "prettier": "1.19.1"
+    "prettier": "2.8.8"
   },
   "husky": {
     "hooks": {
